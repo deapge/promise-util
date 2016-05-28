@@ -1,0 +1,28 @@
+{
+  "name": "promise-util",
+  "version": "1.0.0",
+  "description": "a es6 promise util",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha  -R spec -t 30000",
+    "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- -R spec -t 30000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sdf611097/promise-util.git"
+  },
+  "keywords": [
+    "promise"
+  ],
+  "author": "ChunTingLin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sdf611097/promise-util/issues"
+  },
+  "homepage": "https://github.com/sdf611097/promise-util#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "istanbul": "^0.4.3",
+    "mocha": "^2.5.3"
+  }
+}
