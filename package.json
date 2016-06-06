@@ -1,5 +1,5 @@
 {
-  "name": "promise-util",
+  "name": "ct-promise-util",
   "version": "1.0.0",
   "description": "a es6 promise util",
   "main": "index.js",
