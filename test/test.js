@@ -27,4 +27,41 @@ describe('test functions', function() {
 
   });
 
+  it('retryPromise', ()=> {
+    let k=3;
+    function getPromise() {
+        k--;
+        if(k>0) return Promise.reject(k);
+        else return Promise.resolve(k);
+    }
+    //success case, meet maxtime
+    return util.retryPromise(3,  getPromise)
+    .then(result => {
+        expect(result).to.equal(0);
+        //do once
+        k=-1;
+        return util.retryPromise(5,  getPromise);
+    })
+    .then(result=>{
+        expect(result).to.equal(-2);
+        //out of retry
+        k=5;
+        return util.retryPromise(1,  getPromise);
+    })
+    .then(()=> {
+        done(new Error("should not be resolved"));
+    })
+    .catch(error=>{
+        expect(error).to.equal(3);
+        //no retry
+        k=2;
+        return util.retryPromise(0,  getPromise);
+    })
+    .then(()=> done(new Error("should not be resolved")))
+    .catch(error=>{
+        expect(error).to.equal(1);
+        return Promise.resolve();
+    })
+  });
+
 });
